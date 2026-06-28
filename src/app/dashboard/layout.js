@@ -48,6 +48,11 @@ export default function DashboardLayout({ children }) {
   const [editEmail, setEditEmail] = useState("");
   const [editRole, setEditRole] = useState("");
   const [tickerIndex, setTickerIndex] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handlePfpUpload = (e) => {
     const file = e.target.files[0];
@@ -279,10 +284,10 @@ export default function DashboardLayout({ children }) {
               }}
               className="w-8 h-8 rounded-full border border-blue-100 bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-bold text-xs text-white uppercase select-none overflow-hidden hover:scale-105 active:scale-95 transition cursor-pointer"
             >
-              {userProfile.avatar ? (
+              {isMounted && userProfile.avatar ? (
                 <img src={userProfile.avatar} alt="Profile" className="w-full h-full object-cover" />
               ) : (
-                userProfile.name.charAt(0)
+                userProfile.name ? userProfile.name.charAt(0) : "U"
               )}
             </button>
 

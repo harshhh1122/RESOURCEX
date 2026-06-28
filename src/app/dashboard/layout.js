@@ -33,13 +33,45 @@ export default function DashboardLayout({ children }) {
     notifications, 
     markAllNotificationsRead,
     requests,
-    exchanges
+    exchanges,
+    userProfile,
+    setUserProfile
   } = useApp();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [isOrgDropdownOpen, setIsOrgDropdownOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editName, setEditName] = useState("");
+  const [editEmail, setEditEmail] = useState("");
+  const [editRole, setEditRole] = useState("");
   const [tickerIndex, setTickerIndex] = useState(0);
+
+  const handlePfpUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUserProfile((prev) => ({
+          ...prev,
+          avatar: reader.result
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSaveProfile = (e) => {
+    e.preventDefault();
+    setUserProfile((prev) => ({
+      ...prev,
+      name: editName,
+      email: editEmail,
+      role: editRole
+    }));
+    setIsEditing(false);
+  };
 
   // Build dynamic ticker alerts based on live database state
   const tickerAlerts = [];
@@ -246,8 +278,135 @@ export default function DashboardLayout({ children }) {
           </div>
 
           {/* User Profile Avatar */}
-          <div className="w-8 h-8 rounded-full border border-slate-800 bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-bold text-xs text-white uppercase select-none">
-            {activeOrg.name.charAt(0)}
+          <div className="relative">
+            <button 
+              onClick={() => {
+                setIsProfileOpen(!isProfileOpen);
+                setEditName(userProfile.name);
+                setEditEmail(userProfile.email);
+                setEditRole(userProfile.role);
+                setIsEditing(false);
+              }}
+              className="w-8 h-8 rounded-full border border-blue-100 bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-bold text-xs text-white uppercase select-none overflow-hidden hover:scale-105 active:scale-95 transition cursor-pointer"
+            >
+              {userProfile.avatar ? (
+                <img src={userProfile.avatar} alt="Profile" className="w-full h-full object-cover" />
+              ) : (
+                userProfile.name.charAt(0)
+              )}
+            </button>
+
+            {isProfileOpen && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setIsProfileOpen(false)} />
+                <div className="absolute right-0 mt-2 w-80 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden z-50 p-4 text-slate-100">
+                  <div className="flex justify-between items-center mb-4 border-b border-slate-850 pb-2">
+                    <span className="text-xs font-bold text-blue-500">User Profile Details</span>
+                    <button 
+                      onClick={() => setIsProfileOpen(false)}
+                      className="p-1 rounded hover:bg-slate-850 text-gray-400 hover:text-white transition cursor-pointer"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                  {!isEditing ? (
+                    <div className="space-y-4">
+                      {/* Avatar View */}
+                      <div className="flex items-center gap-3">
+                        <div className="w-16 h-16 rounded-full border border-blue-500/20 bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center font-black text-2xl text-white uppercase overflow-hidden select-none">
+                          {userProfile.avatar ? (
+                            <img src={userProfile.avatar} alt="Profile" className="w-full h-full object-cover" />
+                          ) : (
+                            userProfile.name.charAt(0)
+                          )}
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-bold text-slate-100">{userProfile.name}</h5>
+                          <p className="text-[10px] text-blue-500 font-bold uppercase tracking-wider">{userProfile.role}</p>
+                          <p className="text-[10px] text-gray-500">{userProfile.email}</p>
+                        </div>
+                      </div>
+
+                      {/* Details Group */}
+                      <div className="bg-slate-950 p-2.5 rounded border border-slate-850 space-y-1.5 text-[10px]">
+                        <p><span className="text-gray-500">Active Node:</span> <span className="font-semibold text-slate-100">{activeOrg.name}</span></p>
+                        <p><span className="text-gray-500">Node Type:</span> <span className="font-semibold text-slate-100">{activeOrg.type} &bull; {activeOrg.location}</span></p>
+                        <p><span className="text-gray-500">Trust Score:</span> <span className="font-semibold text-emerald-400">{activeOrg.trustScore}/100</span></p>
+                      </div>
+
+                      {/* Action buttons */}
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => setIsEditing(true)}
+                          className="flex-grow py-2 text-center text-xs font-bold bg-blue-600 hover:bg-blue-500 text-slate-900 rounded-lg transition cursor-pointer active:scale-95 border border-blue-500/25"
+                        >
+                          Edit Profile
+                        </button>
+                        <label className="px-3 py-2 text-center text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg transition cursor-pointer active:scale-95 border border-slate-700 flex items-center justify-center gap-1">
+                          PFP 📸
+                          <input 
+                            type="file" 
+                            accept="image/*" 
+                            onChange={handlePfpUpload}
+                            className="hidden" 
+                          />
+                        </label>
+                      </div>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSaveProfile} className="space-y-3.5">
+                      <div className="space-y-1">
+                        <label className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Display Name</label>
+                        <input 
+                          type="text" 
+                          value={editName}
+                          onChange={(e) => setEditName(e.target.value)}
+                          className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Role</label>
+                        <input 
+                          type="text" 
+                          value={editRole}
+                          onChange={(e) => setEditRole(e.target.value)}
+                          className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Email Address</label>
+                        <input 
+                          type="email" 
+                          value={editEmail}
+                          onChange={(e) => setEditEmail(e.target.value)}
+                          className="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500"
+                          required
+                        />
+                      </div>
+
+                      <div className="flex gap-2 pt-1">
+                        <button
+                          type="button"
+                          onClick={() => setIsEditing(false)}
+                          className="flex-grow py-2 text-center text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-100 rounded-lg transition cursor-pointer"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          className="flex-grow py-2 text-center text-xs font-bold bg-blue-600 hover:bg-blue-500 text-slate-900 rounded-lg transition cursor-pointer active:scale-95"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </form>
+                  )}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </header>

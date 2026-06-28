@@ -497,6 +497,31 @@ export const AppProvider = ({ children }) => {
   const [messages, setMessages] = useState(initialMessages);
   const [notifications, setNotifications] = useState(initialNotifications);
 
+  const [userProfile, setUserProfile] = useState(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("resourcex_user_profile");
+      if (stored) {
+        try {
+          return JSON.parse(stored);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+    return {
+      name: "Admin Officer",
+      email: "admin@resourcex.org",
+      role: "Logistics Manager",
+      avatar: null
+    };
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("resourcex_user_profile", JSON.stringify(userProfile));
+    }
+  }, [userProfile]);
+
 
 
   // Switch Active Organization
@@ -880,6 +905,8 @@ export const AppProvider = ({ children }) => {
         addNotification,
         registerOrganization,
         WORKFLOW_STAGES,
+        userProfile,
+        setUserProfile,
       }}
     >
       {children}

@@ -474,7 +474,7 @@ export default function LandingPage() {
                   setOnboardingStep(1);
                   setIsRegisterTab(false);
                 }}
-                className="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-200 hover:bg-slate-300 border border-slate-200/50 flex items-center justify-center text-slate-300 hover:text-slate-100 transition cursor-pointer active:scale-90 z-10"
+                className="absolute top-4 right-4 w-7 h-7 rounded-full bg-slate-800 hover:bg-slate-800/80 border border-slate-800/50 flex items-center justify-center text-slate-300 hover:text-slate-100 transition cursor-pointer active:scale-90 z-10"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -675,7 +675,7 @@ export default function LandingPage() {
                         setOnboardingStep(1);
                         setIsRegisterTab(false);
                       }}
-                      className="w-1/3 py-3 rounded-xl bg-slate-200 hover:bg-slate-300/85 border border-slate-200 text-slate-100 font-bold transition text-xs tracking-wider"
+                      className="w-1/3 py-3 rounded-xl bg-slate-800 hover:bg-slate-800/80 border border-slate-800 text-slate-100 font-bold transition text-xs tracking-wider"
                     >
                       Back
                     </button>
@@ -826,7 +826,7 @@ export default function LandingPage() {
                     <button
                       type="button"
                       onClick={() => setOnboardingStep(2)}
-                      className="w-1/3 py-3 rounded-xl bg-slate-200 hover:bg-slate-300/85 border border-slate-200 text-slate-100 font-bold transition text-xs tracking-wider"
+                      className="w-1/3 py-3 rounded-xl bg-slate-800 hover:bg-slate-800/80 border border-slate-800 text-slate-100 font-bold transition text-xs tracking-wider"
                     >
                       Back
                     </button>

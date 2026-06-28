@@ -109,7 +109,7 @@ export default function DashboardLayout({ children }) {
       </div>
 
       {/* Top Header */}
-      <header className="relative z-30 h-16 bg-slate-950/60 backdrop-blur-md border-b border-slate-900 px-6 flex items-center justify-between">
+      <header className="relative z-30 h-16 bg-slate-950/60 backdrop-blur-md border-b border-slate-800 px-6 flex items-center justify-between">
         <div className="flex items-center gap-4">
           {/* Logo and Collapse Toggle */}
           <button 
@@ -120,12 +120,20 @@ export default function DashboardLayout({ children }) {
           </button>
           
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-emerald-500 flex items-center justify-center shadow shadow-blue-500/10">
-              <Compass className="w-4.5 h-4.5 text-white" />
-            </div>
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6.5 h-6.5 shrink-0">
+              <path d="M50 8L88 30V74L50 96L12 74V30L50 8Z" stroke="#2563eb" strokeWidth="8" strokeLinejoin="round"/>
+              <path d="M50 32L72 45V69L50 81L28 69V45L50 32Z" stroke="#2563eb" strokeWidth="6" strokeLinejoin="round"/>
+              <path d="M50 8V32" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M12 30L28 45" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M88 30L72 45" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M28 69L12 74" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M72 69L88 74" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M50 81V96" stroke="#2563eb" strokeWidth="8"/>
+            </svg>
             <div>
-              <h1 className="text-sm font-bold tracking-tight bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent hidden sm:inline-block">
-                ResourceX AI
+              <h1 className="text-sm font-black tracking-tight hidden sm:inline-block">
+                <span className="text-slate-900">ResourceX</span>{" "}
+                <span className="text-blue-600">AI</span>
               </h1>
             </div>
           </div>

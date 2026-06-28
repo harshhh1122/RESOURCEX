@@ -133,68 +133,37 @@ export default function LandingPage() {
   }, [showDemoModal]);
 
   return (
-    <div className="relative min-h-screen bg-[#060913] text-[#f3f4f6] flex flex-col justify-between overflow-hidden">
+    <div className="relative min-h-screen bg-slate-950 text-slate-900 flex flex-col justify-between overflow-hidden">
       
-      {/* Background Decorative Gradients & Forest Silhouette Vector */}
+      {/* Background Decorative Gradients */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-blue-500/10 blur-[120px] animate-pulse-glow" />
-        <div className="absolute top-1/3 -right-40 w-96 h-96 rounded-full bg-emerald-500/10 blur-[120px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
-        <div className="absolute -bottom-40 left-1/3 w-96 h-96 rounded-full bg-orange-500/5 blur-[120px] animate-pulse-glow" style={{ animationDelay: "4s" }} />
+        <div className="absolute top-1/3 -right-40 w-96 h-96 rounded-full bg-blue-500/5 blur-[120px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
+        <div className="absolute -bottom-40 left-1/3 w-96 h-96 rounded-full bg-blue-500/3 blur-[120px] animate-pulse-glow" style={{ animationDelay: "4s" }} />
         
         {/* Animated Grid lines */}
-        <div className="absolute inset-0 grid-bg opacity-15 animate-grid-move" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060913]/30 via-[#0d1628]/40 to-[#060913]" />
-
-        {/* Dynamic Forest Silhouettes */}
-        <svg className="absolute bottom-0 left-0 w-full h-[55%] text-[#0d1727] opacity-65" viewBox="0 0 1440 400" fill="none" preserveAspectRatio="none">
-          {/* Back Hills */}
-          <path d="M0,280 Q360,220 720,295 T1440,250 L1440,400 L0,400 Z" fill="currentColor" opacity="0.35" />
-          {/* Middle Pine Tree Silhouettes */}
-          <g fill="currentColor" opacity="0.55" className="text-[#0a111f]">
-            <polygon points="100,320 120,240 140,320" />
-            <polygon points="115,310 130,220 145,310" />
-            <polygon points="200,340 225,260 250,340" />
-            <polygon points="400,320 430,210 460,320" />
-            <polygon points="450,340 475,250 500,340" />
-            <polygon points="800,330 830,200 860,330" />
-            <polygon points="1100,320 1130,230 1160,320" />
-            <polygon points="1200,340 1225,250 1250,340" />
-          </g>
-          {/* Front Hill & Deer Silhouette */}
-          <path d="M0,330 Q400,270 800,345 T1440,310 L1440,400 L0,400 Z" fill="#060913" />
-          {/* Deer Silhouette in dark navy */}
-          <g fill="#03050c" transform="translate(180, 215) scale(0.7)">
-            {/* Body */}
-            <ellipse cx="80" cy="85" rx="25" ry="12" />
-            {/* Neck & Head */}
-            <path d="M98,80 L115,50 C118,45 125,48 122,55 L104,85 Z" />
-            {/* Legs */}
-            <line x1="60" y1="92" x2="55" y2="135" stroke="#03050c" strokeWidth="3" />
-            <line x1="72" y1="94" x2="70" y2="135" stroke="#03050c" strokeWidth="3" />
-            <line x1="88" y1="94" x2="90" y2="135" stroke="#03050c" strokeWidth="3" />
-            <line x1="98" y1="90" x2="105" y2="135" stroke="#03050c" strokeWidth="3" />
-            {/* Ears */}
-            <path d="M120,47 L124,37" stroke="#03050c" strokeWidth="2" />
-            <path d="M118,48 L113,38" stroke="#03050c" strokeWidth="2" />
-            {/* Antlers */}
-            <path d="M122,46 Q130,25 140,20 Q145,18 140,25" stroke="#03050c" strokeWidth="2.5" fill="none" />
-            <path d="M130,32 Q142,30 148,26" stroke="#03050c" strokeWidth="2" fill="none" />
-            <path d="M122,46 Q115,28 108,24 Q104,22 108,28" stroke="#03050c" strokeWidth="2.5" fill="none" />
-            <path d="M116,34 Q106,32 102,28" stroke="#03050c" strokeWidth="2" fill="none" />
-          </g>
-        </svg>
+        <div className="absolute inset-0 grid-bg opacity-25 animate-grid-move" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-slate-900/30 to-slate-950" />
       </div>
 
       {/* Top Navbar */}
       <div className="relative z-10 w-full px-2 md:px-4 mt-6">
         <header className="w-full px-4 py-4 flex items-center justify-between rounded-2xl glass-panel border border-slate-800/45 shadow-2xl shadow-blue-900/5 backdrop-blur-xl">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-blue-600 to-emerald-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <Compass className="w-6 h-6 text-white animate-spin" style={{ animationDuration: '30s' }} />
-            </div>
+            <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 shrink-0">
+              <path d="M50 8L88 30V74L50 96L12 74V30L50 8Z" stroke="#2563eb" strokeWidth="8" strokeLinejoin="round"/>
+              <path d="M50 32L72 45V69L50 81L28 69V45L50 32Z" stroke="#2563eb" strokeWidth="6" strokeLinejoin="round"/>
+              <path d="M50 8V32" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M12 30L28 45" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M88 30L72 45" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M28 69L12 74" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M72 69L88 74" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M50 81V96" stroke="#2563eb" strokeWidth="8"/>
+            </svg>
             <div>
-              <h1 className="text-lg font-black tracking-wider uppercase font-sans text-white">
-                Resource<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 glow-text-blue">X</span>
+              <h1 className="text-lg font-black tracking-tight">
+                <span className="text-slate-900">ResourceX</span>{" "}
+                <span className="text-blue-600">AI</span>
               </h1>
               <p className="text-[9px] text-gray-500 tracking-widest uppercase font-semibold">Emergency Exchange</p>
             </div>

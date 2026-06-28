@@ -151,14 +151,16 @@ export default function LandingPage() {
         <header className="w-full px-4 py-4 flex items-center justify-between rounded-2xl bg-blue-50/85 border border-blue-100/50 shadow-xl shadow-blue-500/5 backdrop-blur-xl">
           <div className="flex items-center gap-3">
             <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 shrink-0">
-              <path d="M50 8L88 30V74L50 96L12 74V30L50 8Z" stroke="#2563eb" strokeWidth="8" strokeLinejoin="round"/>
-              <path d="M50 32L72 45V69L50 81L28 69V45L50 32Z" stroke="#2563eb" strokeWidth="6" strokeLinejoin="round"/>
-              <path d="M50 8V32" stroke="#2563eb" strokeWidth="8"/>
-              <path d="M12 30L28 45" stroke="#2563eb" strokeWidth="8"/>
-              <path d="M88 30L72 45" stroke="#2563eb" strokeWidth="8"/>
-              <path d="M28 69L12 74" stroke="#2563eb" strokeWidth="8"/>
-              <path d="M72 69L88 74" stroke="#2563eb" strokeWidth="8"/>
-              <path d="M50 81V96" stroke="#2563eb" strokeWidth="8"/>
+              <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M50 35L70 45V65L50 75L30 65V45L50 35Z" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M50 55V75" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M30 45L50 55L70 45" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M50 10V35" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M85 30L70 45" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M85 70L70 65" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M50 90V75" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M15 70L30 65" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M15 30L30 45" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <div>
               <h1 className="text-lg font-black tracking-tight">

@@ -2,6 +2,8 @@
 > **Where Emergency Resources Flow & Grow**  
 > An Intelligent Resource Matchmaking & Logistics Coordination Network designed to optimize disaster relief and emergency supplies routing.
 
+🌐 **Live Deployed App:** [https://resourcex.vercel.app/](https://resourcex.vercel.app/)
+
 ---
 
 ## 💡 The Problem (Why We Need ResourceX AI)

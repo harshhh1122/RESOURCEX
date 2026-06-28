@@ -150,18 +150,7 @@ export default function LandingPage() {
       <div className="relative z-10 w-full px-2 md:px-4 mt-6">
         <header className="w-full px-4 py-4 flex items-center justify-between rounded-2xl bg-blue-50/85 border border-blue-100/50 shadow-xl shadow-blue-500/5 backdrop-blur-xl">
           <div className="flex items-center gap-3">
-            <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 shrink-0">
-              <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M32 30V62L50 72L68 62V30" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M50 18L68 30L50 42L32 30Z" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M50 42V72" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M50 10V18" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M15 30L32 30" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M85 30L68 30" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M15 70L32 62" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M85 70L68 62" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M50 90V72" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <img src="/logo.png" className="w-8 h-8 object-contain shrink-0" alt="ResourceX Logo" />
             <div>
               <h1 className="text-lg font-black tracking-tight">
                 <span className="text-blue-950">ResourceX</span>{" "}

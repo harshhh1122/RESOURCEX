@@ -152,18 +152,7 @@ export default function DashboardLayout({ children }) {
           </button>
           
           <div className="flex items-center gap-2.5">
-            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6.5 h-6.5 shrink-0">
-              <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M32 30V62L50 72L68 62V30" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M50 18L68 30L50 42L32 30Z" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M50 42V72" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M50 10V18" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M15 30L32 30" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M85 30L68 30" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M15 70L32 62" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M85 70L68 62" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M50 90V72" stroke="#2563eb" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <img src="/logo.png" className="w-6.5 h-6.5 object-contain shrink-0" alt="ResourceX Logo" />
             <div>
               <h1 className="text-sm font-black tracking-tight hidden sm:inline-block">
                 <span className="text-blue-950">ResourceX</span>{" "}

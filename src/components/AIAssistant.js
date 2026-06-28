@@ -106,47 +106,52 @@ export default function AIAssistant() {
         {!isOpen ? (
           // Hovering Bot Bubble Button
           <motion.button
-            layoutId="ai-chat-bubble"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
             onClick={() => setIsOpen(true)}
             className="w-14 h-14 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 flex items-center justify-center text-white shadow-2xl border border-blue-400/20 active:scale-95 cursor-pointer relative group"
             whileHover={{ scale: 1.05 }}
           >
             <Bot className="w-6 h-6 animate-pulse" />
-            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#060913]" />
-            <span className="absolute right-16 scale-0 group-hover:scale-100 transition-all duration-150 origin-right whitespace-nowrap bg-slate-950/90 text-[10px] text-blue-400 font-bold tracking-wider uppercase px-3 py-1.5 rounded-lg border border-blue-500/20 backdrop-blur">
+            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-slate-900" />
+            <span className="absolute right-16 scale-0 group-hover:scale-100 transition-all duration-150 origin-right whitespace-nowrap bg-slate-900/90 text-[10px] text-blue-500 font-bold tracking-wider uppercase px-3 py-1.5 rounded-lg border border-slate-800 backdrop-blur">
               AI Logistics Officer
             </span>
           </motion.button>
         ) : (
           // Chat Interface Window
           <motion.div
-            layoutId="ai-chat-bubble"
+            initial={{ opacity: 0, scale: 0.85, y: 50, originX: 1, originY: 1 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85, y: 50 }}
+            transition={{ type: "spring", damping: 25, stiffness: 350 }}
             className="w-[360px] md:w-[400px] h-[500px] glass-panel border border-blue-500/35 rounded-xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Window Header */}
-            <div className="px-4 py-3 bg-gradient-to-r from-blue-950/60 to-slate-900 border-b border-blue-500/25 flex items-center justify-between">
+            <div className="px-4 py-3 bg-gradient-to-r from-blue-50 to-blue-100 border-b border-blue-100/50 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
+                <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-600">
                   <Bot className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
+                  <h4 className="text-xs font-bold text-blue-950 flex items-center gap-1.5">
                     ResourceX AI Assistant
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   </h4>
-                  <p className="text-[9px] text-gray-500 uppercase tracking-widest">Global Logistics Routing</p>
+                  <p className="text-[9px] text-slate-500 uppercase tracking-widest">Global Logistics Routing</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 rounded hover:bg-slate-800 text-gray-400 hover:text-white transition"
+                className="p-1 rounded hover:bg-blue-200/50 text-slate-500 hover:text-slate-900 transition cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Chat Messages Logs */}
-            <div className="flex-grow p-4 overflow-y-auto space-y-4 dots-bg">
+            <div className="flex-grow p-4 overflow-y-auto space-y-4 dots-bg bg-slate-950">
               {messages.map((m) => (
                 <div
                   key={m.id}
@@ -155,14 +160,14 @@ export default function AIAssistant() {
                   <div
                     className={`max-w-[85%] rounded-lg p-3 text-xs leading-relaxed ${
                       m.sender === "user"
-                        ? "bg-blue-600 text-white rounded-br-none"
-                        : "bg-slate-900/90 border border-slate-800 text-gray-300 rounded-bl-none"
+                        ? "bg-blue-600 text-slate-900 rounded-br-none font-medium"
+                        : "bg-slate-900 border border-slate-800 text-slate-100 rounded-bl-none"
                     }`}
                   >
                     {/* Render basic markdown/lines in simple text */}
                     {m.text.split("\n").map((line, lIdx) => {
                       if (line.startsWith("###")) {
-                        return <h5 key={lIdx} className="font-bold text-blue-400 mt-1 mb-1">{line.replace("###", "")}</h5>;
+                        return <h5 key={lIdx} className="font-bold text-blue-600 mt-1 mb-1">{line.replace("###", "")}</h5>;
                       }
                       if (line.startsWith("**")) {
                         return (
@@ -178,42 +183,42 @@ export default function AIAssistant() {
                     {m.structuredData && (
                       <div className="mt-3 space-y-1.5">
                         {m.structuredData.map((node, nIdx) => (
-                          <div key={nIdx} className="p-2 rounded bg-slate-950 border border-blue-500/10 flex items-start gap-2">
+                          <div key={nIdx} className="p-2 rounded bg-slate-950 border border-slate-800 flex items-start gap-2">
                             <span className="text-xs">📍</span>
                             <div>
-                              <p className="font-bold text-[11px] text-white">{node.title}</p>
-                              <p className="text-[10px] text-gray-400">{node.details}</p>
+                              <p className="font-bold text-[11px] text-slate-100">{node.title}</p>
+                              <p className="text-[10px] text-slate-400">{node.details}</p>
                             </div>
                           </div>
                         ))}
                       </div>
                     )}
                   </div>
-                  <span className="text-[9px] text-gray-500 mt-1 px-1">
+                  <span className="text-[9px] text-slate-400 mt-1 px-1">
                     {new Date(m.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
               ))}
 
               {isTyping && (
-                <div className="flex items-center gap-2 bg-slate-900/95 border border-slate-800/80 p-3 rounded-lg w-20">
-                  <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
-                  <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }} />
-                  <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }} />
+                <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 p-3 rounded-lg w-20">
+                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0s' }} />
+                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }} />
+                  <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }} />
                 </div>
               )}
               <div ref={messagesEndRef} />
             </div>
 
             {/* Presets and Chat Inputs */}
-            <div className="p-3 border-t border-slate-800 bg-slate-950/60 backdrop-blur">
+            <div className="p-3 border-t border-slate-800 bg-slate-950/80 backdrop-blur">
               {/* Presets */}
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {presetPrompts.map((p, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleSend(p.text)}
-                    className="px-2 py-1 rounded-full bg-slate-900 hover:bg-slate-800 text-[10px] text-blue-400 hover:text-blue-300 border border-slate-800 transition active:scale-95 cursor-pointer"
+                    className="px-2 py-1 rounded-full bg-slate-900 hover:bg-slate-800 text-[10px] text-blue-500 hover:text-blue-600 border border-slate-800 transition active:scale-95 cursor-pointer"
                   >
                     {p.label}
                   </button>
@@ -233,11 +238,11 @@ export default function AIAssistant() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask ResourceX AI..."
-                  className="flex-grow bg-slate-900 text-xs px-3 py-2.5 rounded-lg border border-slate-800 focus:border-blue-500 focus:outline-none text-[#f3f4f6] placeholder-gray-500"
+                  className="flex-grow bg-slate-900 text-xs px-3 py-2.5 rounded-lg border border-slate-800 focus:border-blue-500 focus:outline-none text-slate-100 placeholder-slate-400"
                 />
                 <button
                   type="submit"
-                  className="p-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition active:scale-95 cursor-pointer shadow-lg shadow-blue-600/25"
+                  className="p-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-slate-900 transition active:scale-95 cursor-pointer shadow-lg shadow-blue-600/25"
                 >
                   <Send className="w-4 h-4" />
                 </button>

@@ -148,30 +148,22 @@ export default function LandingPage() {
 
       {/* Top Navbar */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4 mt-6">
-        <header className="w-full px-6 py-4 flex items-center justify-between rounded-full bg-white/80 border border-slate-200/50 shadow-sm backdrop-blur-xl">
+        <header className="w-full px-6 py-4 flex items-center justify-between rounded-full bg-slate-900/90 border border-slate-200/80 shadow-md backdrop-blur-md">
           {/* Logo */}
           <div className="flex items-center gap-2.5">
             <img src="/logo.png" className="w-6 h-6 object-contain shrink-0" alt="ResourceX Logo" />
-            <h1 className="text-sm font-black tracking-tight text-slate-900">
+            <h1 className="text-sm font-black tracking-tight text-blue-950">
               ResourceX <span className="text-blue-600">AI</span>
             </h1>
           </div>
-
-          {/* Center Nav Links */}
-          <nav className="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-200">
-            <span className="cursor-pointer hover:text-blue-400 transition">Emergency Inventory</span>
-            <span className="cursor-pointer hover:text-blue-400 transition">Matchmaking Portal</span>
-            <span className="cursor-pointer hover:text-blue-400 transition">AI Forecasts</span>
-            <span className="cursor-pointer hover:text-blue-400 transition">Active Nodes</span>
-          </nav>
 
           {/* Right Action */}
           <div className="flex items-center gap-4">
             <button 
               onClick={() => { setOnboardingStep(1); setShowLoginModal(true); }} 
-              className="px-5 py-2 text-xs font-bold rounded-full bg-slate-950 hover:bg-slate-900 text-white transition active:scale-95 shadow-md shadow-slate-950/10 cursor-pointer"
+              className="px-5 py-2 text-xs font-bold rounded-full bg-[#0f172a] hover:bg-[#1e293b] text-slate-900 transition active:scale-95 shadow-md shadow-blue-500/10 cursor-pointer"
             >
-              Launch Console
+              Login / Signup
             </button>
           </div>
         </header>
@@ -179,20 +171,20 @@ export default function LandingPage() {
 
       {/* Centered Card Hero Section */}
       <main className="relative z-10 flex-grow flex flex-col justify-center max-w-7xl w-full mx-auto px-4 py-8 md:py-12">
-        <div className="w-full rounded-[32px] bg-white border border-slate-200/50 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center text-center px-6 py-24 md:py-32 min-h-[580px]">
+        <div className="w-full rounded-[32px] bg-slate-900 border border-slate-200/50 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center text-center px-6 py-24 md:py-32 min-h-[580px]">
           
-          {/* Bottom-to-Top rising gradient fade */}
-          <div className="absolute inset-x-0 bottom-0 h-80 bg-gradient-to-t from-blue-500/10 via-blue-500/0 to-transparent pointer-events-none z-0" />
+          {/* Bottom-to-Top rising gradient fade - sky blue tint */}
+          <div className="absolute inset-x-0 bottom-0 h-80 bg-gradient-to-t from-sky-200/40 via-sky-100/10 to-transparent pointer-events-none z-0" />
           
           {/* Content Wrapper */}
           <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center space-y-6 md:space-y-8">
             {/* Small Center Logo */}
-            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shadow-inner mb-2 animate-float">
+            <div className="w-12 h-12 rounded-full bg-blue-50/50 flex items-center justify-center shadow-inner mb-2 animate-float">
               <img src="/logo.png" className="w-6 h-6 object-contain" alt="ResourceX Icon" />
             </div>
 
             {/* Title */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-slate-950">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-slate-100">
               Where Resources <br />
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 Flow & Grow
@@ -200,7 +192,7 @@ export default function LandingPage() {
             </h2>
 
             {/* Description */}
-            <p className="text-sm md:text-base text-gray-500 max-w-md leading-relaxed">
+            <p className="text-sm md:text-base text-slate-300 max-w-md leading-relaxed">
               AI predicts shortages, matches organizations with surplus resources, and optimizes emergency resource allocation before crises become disasters.
             </p>
 
@@ -208,9 +200,9 @@ export default function LandingPage() {
             <div className="pt-2">
               <button 
                 onClick={() => { setOnboardingStep(1); setShowLoginModal(true); }} 
-                className="px-8 py-3.5 bg-slate-950 hover:bg-slate-900 text-white rounded-full font-bold shadow-lg shadow-slate-950/15 flex items-center justify-center gap-2.5 transition active:scale-95 text-sm cursor-pointer"
+                className="px-8 py-3.5 bg-[#0f172a] hover:bg-[#1e293b] text-slate-900 rounded-full font-bold shadow-lg shadow-blue-500/10 flex items-center justify-center gap-2.5 transition active:scale-95 text-sm cursor-pointer"
               >
-                Launch Console
+                Login / Signup
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -219,24 +211,24 @@ export default function LandingPage() {
           {/* Micro Statistics at Card Bottom */}
           <div className="absolute bottom-8 left-0 right-0 z-10 hidden sm:flex justify-center items-center gap-8 md:gap-12 px-6 text-center">
             <div className="flex flex-col">
-              <span className="text-base md:text-lg font-extrabold text-slate-950">
+              <span className="text-base md:text-lg font-extrabold text-slate-100">
                 <CountUp to={organizations.length} />
               </span>
-              <span className="text-[9px] text-gray-400 uppercase tracking-widest font-bold">Active Nodes</span>
+              <span className="text-[9px] text-slate-300 uppercase tracking-widest font-bold">Active Nodes</span>
             </div>
             <div className="w-px h-6 bg-slate-200" />
             <div className="flex flex-col">
-              <span className="text-base md:text-lg font-extrabold text-slate-950">
+              <span className="text-base md:text-lg font-extrabold text-slate-100">
                 <CountUp to={avgTransitTime} suffix=" min" />
               </span>
-              <span className="text-[9px] text-gray-400 uppercase tracking-widest font-bold">Avg Transit</span>
+              <span className="text-[9px] text-slate-300 uppercase tracking-widest font-bold">Avg Transit</span>
             </div>
             <div className="w-px h-6 bg-slate-200" />
             <div className="flex flex-col">
-              <span className="text-base md:text-lg font-extrabold text-slate-950">
+              <span className="text-base md:text-lg font-extrabold text-slate-100">
                 <CountUp to={matchAccuracy} suffix="%" />
               </span>
-              <span className="text-[9px] text-gray-400 uppercase tracking-widest font-bold">AI Accuracy</span>
+              <span className="text-[9px] text-slate-300 uppercase tracking-widest font-bold">AI Accuracy</span>
             </div>
           </div>
 

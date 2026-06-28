@@ -19,7 +19,8 @@ import {
   Menu,
   X,
   ChevronDown,
-  AlertTriangle
+  AlertTriangle,
+  Info
 } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import AIAssistant from "@/components/AIAssistant";
@@ -430,8 +431,19 @@ export default function DashboardLayout({ children }) {
 
           {/* User Organization Tag at bottom of sidebar */}
           {isSidebarOpen && (
-            <div className="m-3 p-3 rounded-lg bg-slate-950/70 border border-slate-900 text-center">
-              <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mb-0.5">Trust Certified</span>
+            <div className="m-3 p-3 rounded-lg bg-slate-950/70 border border-slate-900 text-center relative group">
+              <div className="flex items-center justify-center gap-1.5 mb-1">
+                <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block">Trust Certified</span>
+                <div className="relative cursor-pointer">
+                  <Info className="w-3.5 h-3.5 text-emerald-400 hover:text-emerald-300 transition" />
+                  
+                  {/* Tooltip Popover */}
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2 rounded-lg bg-slate-900 border border-slate-800 text-[10px] text-gray-300 text-left font-normal leading-normal shadow-xl opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 z-50">
+                    <span className="font-bold text-white block mb-0.5">Trust Score Info</span>
+                    Measures listing accuracy & handover success. High scores prioritize your node in the AI matchmaking queue.
+                  </div>
+                </div>
+              </div>
               <p className="text-[11px] font-bold text-white mb-1">Score: {activeOrg.trustScore}/100</p>
               <div className="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden">
                 <div className="bg-emerald-500 h-full" style={{ width: `${activeOrg.trustScore}%` }}></div>
